@@ -36,7 +36,7 @@ This shell script is designed to monitor a log file and optionally analyze it fo
 main()
 The main function of the script, responsible for initiating the log monitoring process.
 
-### Script Execution Flow
+## Script Execution Flow
 
 1. Check if the correct number of arguments are provided.
 2. Check if the log file exists.
