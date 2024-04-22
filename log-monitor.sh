@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Function to handle Ctrl+C
+# Function to handle Ctrl+C and exit gracefully
 function ctrl_c() {
     echo -e "\nMonitoring interrupted. Exiting."
     exit 0
@@ -9,14 +9,25 @@ function ctrl_c() {
 # Trap Ctrl+C and call the function
 trap ctrl_c SIGINT
 
-# Check for correct usage
-if [ $# -lt 2 ]; then
+# Function to display usage message
+function display_usage() {
     echo "Usage: $0 <log_file> <keyword1> <keyword2> ..."
+}
+
+# Check for correct usage
+if [ "$#" -lt 2 ]; then
+    display_usage
     exit 1
 fi
 
-log_file=$1
+log_file="$1"
 keywords=("${@:2}")
+
+# Check if log file exists and is readable
+if [ ! -r "$log_file" ]; then
+    echo "Error: Log file '$log_file' not found or not readable."
+    exit 1
+fi
 
 # Function to monitor log file
 function monitor_log() {
