@@ -73,3 +73,6 @@ To use the script, follow these steps:
    
    ```bash
    ./log-monitor.sh <log_file> <keyword1> <keyword2> ...
+4. Run the script with the following command, providing the path to the log file `(/var/log/syslog)` and the keywords "error" and "warning":
+   `./log-monitor.sh /var/log/syslog error warning`
+5. **Keyword Explanation**: In log files, "error" typically refers to a significant problem or failure, while "warning" indicates a potential issue or abnormal condition that may require attention but does not necessarily result in failure.
