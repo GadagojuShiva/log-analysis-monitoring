@@ -13,7 +13,7 @@ trap ctrl_c SIGINT
 
 # Function to display usage message
 function display_usage() {
-    echo "Usage: $0 <log_file> <keyword1> <keyword2> ..."  # Display usage instructions
+    echo "Usage: $0 <log_file> [<keyword1> <keyword2> ...]"  # Display usage instructions
 }
 
 # Check for correct usage
