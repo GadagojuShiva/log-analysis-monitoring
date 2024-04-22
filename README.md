@@ -88,7 +88,7 @@ Here are some examples of how to use the script:
    ```bash
    ./log-monitor.sh /var/log/syslog error warning
    ```
-**NOTE**, **Keyword Explanation**: In log files, "error" typically refers to a significant problem or failure, while "warning" indicates a potential issue or abnormal condition that may require attention but does not necessarily result in failure.
+**Keyword Explanation**: In log files, "error" typically refers to a significant problem or failure, while "warning" indicates a potential issue or abnormal condition that may require attention but does not necessarily result in failure.
    
 2. Monitor an Apache access log for HTTP status codes:
    ```bash
