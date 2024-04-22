@@ -7,12 +7,7 @@
   - [Introduction](#introduction)
   - [Script Overview](#script-overview)
   - [Function Definitions](#function-definitions)
-    - [`ctrl_c()`](#ctrl_c)
-    - [`monitor_log()`](#monitor_log)
-    - [`count_keywords()`](#count_keywords)
-  - [Main Function](#main-function)
-    - [Script Execution Flow](#script-execution-flow)
-    - [`main()`](#main)
+  - [Script Execution Flow](#script-execution-flow)
   - [Installation](#installation)
   - [Usage](#usage)
   - [Examples](#examples)
@@ -20,52 +15,37 @@
 
 ## Introduction
 
-This shell script automates the analysis and monitoring of log files using Bash shell scripting. It continuously monitors a specified log file for new entries, performs basic log analysis, and generates a summary report.
+This shell script is designed to monitor a log file and optionally analyze it for specified keywords. It provides a simple yet effective way to monitor logs in real-time and generate summary reports based on specified criteria.
 
 ## Script Overview
 
-The `log-monitor.sh` script performs the following tasks:
+- Accepts a log file path and optional keywords as command-line arguments.
+- Monitors the log file for changes and appends new entries to a summary report.
+- Optionally analyzes the log file for occurrences of specified keywords and generates a summary report.
 
 ## Function Definitions
+### usage()
+- Displays usage information for the script, including command-line arguments and examples.
 
-### `ctrl_c()`
+### monitor_log()
+- Monitors the log file for changes and appends new entries to a summary report. If keywords are provided, it filters the log entries based on those keywords.
 
-This function handles the interruption signal (Ctrl+C) and gracefully exits the script. It's registered using the `trap` command to catch the SIGINT signal.
+### analyze_log()
+- Analyzes the log file for occurrences of specified keywords and generates a summary report detailing the count of each keyword.
 
-### `monitor_log()`
-
-This function continuously monitors the specified log file (`$1`) for new entries using the `tail` command with the `-F` option, which follows the file as it grows.
-
-- ``tail``: Prints the last part of files. Here, it's used with the -F option to follow the file as it grows, continuously displaying new lines appended to the file.
-
-### `count_keywords()`
-
-This function counts occurrences of keywords or patterns provided as arguments (`$2`, `$3`, ...) in the log entries using the `grep`, `sort`, and `uniq` commands. It extracts matching lines with `grep`, sorts them with `sort`, and counts unique occurrences with `uniq -c`.
-
-- `grep`: Searches for patterns in each input file or standard input. It extracts lines containing the specified keywords.
-- `sort`: Sorts lines of text files. Here, it's used to sort the extracted lines alphabetically.
-- `uniq`: Reports or filters out repeated lines in a file. With the `-c` option, it also counts the number of occurrences of each line. Here, it counts unique occurrences of lines (keywords) extracted by `grep`.
-
-## Main Function
+main()
+The main function of the script, responsible for initiating the log monitoring process.
 
 ### Script Execution Flow
 
-1. Checks for correct usage and the presence of command-line arguments.
-   
-2. Sets variables for the log file path (`$log_file`) and keywords to monitor (`$keywords`).
-   
-3. Invokes the `main` function to start log monitoring and analysis.
-
-### `main()`
-
-This function executes the main functionality of the script:
-
-- Starts log monitoring by piping the output of `monitor_log` to a `while` loop.
-- Logs each new entry to the log file `log_monitor.log` and prints it to the console.
-- Upon interruption (Ctrl+C), prints a message and calls `count_keywords` to generate a summary report.
+1. Check if the correct number of arguments are provided.
+2. Check if the log file exists.
+3. Start monitoring the log file.
+4. Trap Ctrl+C to stop monitoring and perform log analysis.
+5. Display messages indicating the monitoring process.
 
 ## Installation
-This script has no dependencies and can be run directly on any system with Bash installed.
+No specific installation steps are required. Simply download the script and ensure it has executable permissions.
 
 ## Usage
 
@@ -78,22 +58,27 @@ To use the script, follow these steps:
 3. Run the script from the command line with the following syntax:
    
    ```bash
-   ./log-monitor.sh <log_file> <keyword1> <keyword2> ...
+    Usage: ./log_monitor.sh <log_file_path> [<keyword1> [<keyword2>]]
+    Example: ./log_monitor.sh /var/log/syslog 'ERROR' 'WARNING'
+    If no keywords are provided, the entire log file will be monitored.
    ```
 ## Examples
 
 Here are some examples of how to use the script:
 
-1. Monitor a syslog file for errors and warnings:
+1. Monitor the entire log file:
    ```bash
-   ./log-monitor.sh /var/log/syslog error warning
+   ./log_monitor.sh /var/log/syslog
    ```
 **Keyword Explanation**: In log files, "error" typically refers to a significant problem or failure, while "warning" indicates a potential issue or abnormal condition that may require attention but does not necessarily result in failure.
    
-2. Monitor an Apache access log for HTTP status codes:
+2. Monitor the log file for specific keywords: Apache access log for HTTP status codes:
    ```bash
    ./log-monitor.sh /var/log/apache2/access.log 404 500
+   ./log_monitor.sh /var/log/syslog 'ERROR' 'WARNING'
    ```
 
 ## Troubleshooting
-If you encounter any issues, ensure that the specified log file exists and is readable by the script. You may need to adjust file permissions or provide the full path to the log file.
+1. If the script fails to execute, ensure that the log file path is correct and the script has executable permissions.
+2. Check for any errors or warnings displayed during script execution.
+3. If the script stops unexpectedly, use Ctrl+C to stop monitoring and analyze the log manually.
