@@ -73,6 +73,22 @@ To use the script, follow these steps:
    
    ```bash
    ./log-monitor.sh <log_file> <keyword1> <keyword2> ...
-4. Run the script with the following command, providing the path to the log file `(/var/log/syslog)` and the keywords "error" and "warning":
-   `./log-monitor.sh /var/log/syslog error warning`
-5. **Keyword Explanation**: In log files, "error" typically refers to a significant problem or failure, while "warning" indicates a potential issue or abnormal condition that may require attention but does not necessarily result in failure.
+   ```
+Here are some examples of how to use the script:
+
+1. Monitor a syslog file for errors and warnings:
+   ```bash
+   ./log-monitor.sh /var/log/syslog error warning
+   ```
+**NOTE**, **Keyword Explanation**: In log files, "error" typically refers to a significant problem or failure, while "warning" indicates a potential issue or abnormal condition that may require attention but does not necessarily result in failure.
+   
+2. Monitor an Apache access log for HTTP status codes:
+   ```bash
+   ./log-monitor.sh /var/log/apache2/access.log 404 500
+   ```
+
+## Installation
+This script has no dependencies and can be run directly on any system with Bash installed.
+
+## Troubleshooting
+If you encounter any issues, ensure that the specified log file exists and is readable by the script. You may need to adjust file permissions or provide the full path to the log file.
