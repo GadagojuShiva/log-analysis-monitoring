@@ -14,6 +14,9 @@
     - [Script Execution Flow](#script-execution-flow)
     - [`main()`](#main)
   - [Usage](#usage)
+  - [Examples](#examples)
+  - [Installation](#installation)
+  - [Troubleshooting](#troubleshooting)
 
 ## Introduction
 
@@ -74,6 +77,8 @@ To use the script, follow these steps:
    ```bash
    ./log-monitor.sh <log_file> <keyword1> <keyword2> ...
    ```
+## Examples
+
 Here are some examples of how to use the script:
 
 1. Monitor a syslog file for errors and warnings:
