@@ -3,6 +3,8 @@
 # Function to handle Ctrl+C and exit gracefully
 function ctrl_c() {
     echo -e "\nMonitoring interrupted. Exiting."
+    echo "Keyword counts:"
+    count_keywords < log_monitor.log  # Count occurrences of keywords in the log file
     exit 0
 }
 
@@ -49,8 +51,3 @@ function main() {
 
 # Start monitoring
 main
-
-# Upon interruption, print keyword counts
-echo "Monitoring interrupted."
-echo "Keyword counts:"
-count_keywords < log_monitor.log  # Count occurrences of keywords in the log file
