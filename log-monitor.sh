@@ -11,12 +11,12 @@ trap ctrl_c SIGINT
 
 # Function to display usage message
 function display_usage() {
-    echo "Usage: $0 <log_file> <keyword1> <keyword2> ..."
+    echo "Usage: $0 <log_file> <keyword1> <keyword2> ..."  # Display usage instructions
 }
 
 # Check for correct usage
 if [ "$#" -lt 2 ]; then
-    display_usage
+    display_usage  # Show usage message if incorrect number of arguments provided
     exit 1
 fi
 
@@ -25,7 +25,7 @@ keywords=("${@:2}")
 
 # Check if log file exists and is readable
 if [ ! -r "$log_file" ]; then
-    echo "Error: Log file '$log_file' not found or not readable."
+    echo "Error: Log file '$log_file' not found or not readable."  # Error message for missing or unreadable log file
     exit 1
 fi
 
