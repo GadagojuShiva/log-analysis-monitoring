@@ -24,6 +24,15 @@ This shell script automates the analysis and monitoring of log files using Bash 
 
 ## Script Overview
 
+```bash
+#!/usr/bin/env bash
+```
+- The shebang line indicates the path to the interpreter that will execute the script.
+- Here, '/usr/bin/env' is a command that locates the 'bash' interpreter in the system's PATH environment variable.
+- 'bash' is the name of the shell interpreter that will execute the script.
+- This shebang line ensures that the script is executed by the 'bash' interpreter available in the user's PATH,
+- making it more portable across different Unix-like systems.
+
 The `log-monitor.sh` script performs the following tasks:
 
 ## Function Definitions
