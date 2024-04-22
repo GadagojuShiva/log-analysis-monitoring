@@ -1,4 +1,4 @@
-#!/usr/bin/env bash    
+#!/bin/bash  
 
 # Function to handle Ctrl+C and exit gracefully
 function ctrl_c() {
