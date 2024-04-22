@@ -13,9 +13,9 @@
   - [Main Function](#main-function)
     - [Script Execution Flow](#script-execution-flow)
     - [`main()`](#main)
+  - [Installation](#installation)
   - [Usage](#usage)
   - [Examples](#examples)
-  - [Installation](#installation)
   - [Troubleshooting](#troubleshooting)
 
 ## Introduction
@@ -64,6 +64,9 @@ This function executes the main functionality of the script:
 - Logs each new entry to the log file `log_monitor.log` and prints it to the console.
 - Upon interruption (Ctrl+C), prints a message and calls `count_keywords` to generate a summary report.
 
+## Installation
+This script has no dependencies and can be run directly on any system with Bash installed.
+
 ## Usage
 
 To use the script, follow these steps:
@@ -91,9 +94,6 @@ Here are some examples of how to use the script:
    ```bash
    ./log-monitor.sh /var/log/apache2/access.log 404 500
    ```
-
-## Installation
-This script has no dependencies and can be run directly on any system with Bash installed.
 
 ## Troubleshooting
 If you encounter any issues, ensure that the specified log file exists and is readable by the script. You may need to adjust file permissions or provide the full path to the log file.
