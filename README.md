@@ -12,6 +12,7 @@
   - [Usage](#usage)
   - [Examples](#examples)
   - [Troubleshooting](#troubleshooting)
+  - [Demo Video](#demo)
 
 ## Introduction
 
@@ -88,3 +89,7 @@ Here are some examples of how to use the script:
 1. If the script fails to execute, ensure that the log file path is correct and the script has executable permissions.
 2. Check for any errors or warnings displayed during script execution.
 3. If the script stops unexpectedly, use Ctrl+C to stop monitoring and analyze the log manually.
+
+## Demo
+<iframe src="https://drive.google.com/file/d/11fN4J4wZcNuYtv2SgVODq812-AMhNHcX/view?usp=sharing" width="640" height="480"></iframe>
+
