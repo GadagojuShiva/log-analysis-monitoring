@@ -15,13 +15,19 @@
 
 ## Introduction
 
-This shell script is designed to monitor a log file and optionally analyze it for specified keywords. It provides a simple yet effective way to monitor logs in real-time and generate summary reports based on specified criteria.
+This script is designed to monitor a specified log file in real-time and optionally search for specific keywords within it. If no keywords are provided, the script monitors the entire log file. It also generates a summary report that contains either all log entries or only those matching specified keywords, along with their respective counts.
 
 ## Script Overview
 
-- Accepts a log file path and optional keywords as command-line arguments.
-- Monitors the log file for changes and appends new entries to a summary report.
-- Optionally analyzes the log file for occurrences of specified keywords and generates a summary report.
+Here's a brief description of the script's functionality:
+
+- It takes at least one argument: the path to the log file to be monitored.
+- Optionally, it can take two additional arguments: keywords to search for within the log file.
+- It checks if the log file exists and if the correct number of arguments are provided.
+- It monitors the log file in real-time using `tail -f`.
+- If keywords are provided, it filters log entries to display only those containing the specified keywords.
+- It generates a summary report (summary-report.log) which includes either all log entries or only those containing the specified keywords.
+- The script can be stopped by pressing `Ctrl+C`, and upon termination, it performs log analysis (counting occurrences of specified keywords) and adds the analysis to the summary report.
 
 ## Function Definitions
 ### usage()
@@ -51,7 +57,7 @@ No specific installation steps are required. Simply download the script and ensu
 
 To use the script, follow these steps:
 
-1. Save the `log-monitor.sh` script to your desired directory.
+1. Save the `log-monitor.sh` script to your desired directory. or Clone this Repo using `git clone https://github.com/GadagojuShiva/log-analysis-monitoring`  and cd to the `log-analysis-monitoring` and follow the commands below
    
 2. Make the script executable by running `chmod +x log-monitor.sh`.
    
